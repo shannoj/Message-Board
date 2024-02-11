@@ -1,22 +1,36 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+interface Message {
+  text: string;
+  user: string;
+  added: Date;
+}
+
 function MyComponent() {
-  const [data, setData] = useState<Array<[]>>();
+  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000").then((response) => {
-      setData(response.data);
+    axios.get<Message[]>("http://localhost:5000").then((response) => {
+      setMessages(response.data);
       console.log(response.data);
     });
   }, []);
-    // Simulate a long-running loop that blocks the event loop
+
   return (
     <div>
-      {data ? <p>{Array.isArray(data) ? data[0].text : data}</p> : <p>Loading data...</p>}
+      {messages.length > 0 ? (
+        messages.map((message) => (
+          <div>
+            <p>{message.text}</p>
+            <p>{message.user}</p>
+          </div>
+        ))
+      ) : (
+        <p>Loading messages...</p>
+      )}
     </div>
   );
-
 }
 
 export default MyComponent;

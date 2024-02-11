@@ -19,7 +19,7 @@ const messages = [
 app.use(cors())
 
 app.get('/', (req, res) => {
-  res.render(messages)
+  res.json(messages)
 })
 
 app.listen(port, () => {
