@@ -1,5 +1,7 @@
 import axios from "axios";
 import "./App.css";
+import { useEffect, useState } from "react";
+import MyComponent from "./Component";
 
 //data will be the string we send from our server
 const apiCall = () => {
@@ -13,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <MyComponent></MyComponent>
         <button onClick={apiCall}>Make API Call</button>
       </header>
     </div>
