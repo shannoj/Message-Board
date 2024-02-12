@@ -4,7 +4,7 @@ import axios from "axios";
 interface Message {
   text: string;
   user: string;
-  added: Date;
+  added: string;
 }
 
 function MyComponent() {
@@ -21,9 +21,8 @@ function MyComponent() {
     <div>
       {messages.length > 0 ? (
         messages.map((message) => (
-          <div>
-            <p>{message.text}</p>
-            <p>{message.user}</p>
+          <div key={message.added} >
+            <p>{message.text} -{message.user} at {message.added}</p>
           </div>
         ))
       ) : (
