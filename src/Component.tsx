@@ -21,7 +21,7 @@ function MyComponent() {
     <div>
       {messages.length > 0 ? (
         messages.map((message) => (
-          <div key={message.added} >
+          <div key={message.added} className="flex w-full h-full border-2 border-black border-solid">
             <p>{message.text} -{message.user} at {message.added}</p>
           </div>
         ))
